@@ -11,5 +11,10 @@ This tutorial will inspire you to get started developing embedded microcontrolle
 
 -> Click [HERE](https://www.linkedin.com/pulse/micropython-firmware-development-part-2-why-kevin-thomas/) to read the article on LinkedIn.
 
+## Lesson 3: MicroPython Firmware Development (Part 2: "The How...")
+This tutorial will help get your development environment set up to develop MicroPython.
+
+-> Click [HERE](https://www.linkedin.com/pulse/micropython-firmware-development-part-3-how-kevin-thomas/) to read the article on LinkedIn.
+
 ## License
 [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
