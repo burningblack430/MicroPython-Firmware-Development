@@ -16,5 +16,10 @@ This tutorial will help get your development environment set up to develop Micro
 
 -> Click [HERE](https://www.linkedin.com/pulse/micropython-firmware-development-part-3-how-kevin-thomas/) to read the article on LinkedIn.
 
+## Lesson 4: MicroPython Firmware Development (Part 4: "Hello World")
+This tutorial will get you programming your first program in MicroPython and introduce you to the REPL.
+
+-> Click [HERE](https://www.linkedin.com/pulse/micropython-firmware-development-part-4-hello-world-kevin-thomas/) to read the article on LinkedIn.
+
 ## License
 [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
