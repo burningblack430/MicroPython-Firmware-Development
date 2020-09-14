@@ -21,5 +21,10 @@ This tutorial will get you programming your first program in MicroPython and int
 
 -> Click [HERE](https://www.linkedin.com/pulse/micropython-firmware-development-part-4-hello-world-kevin-thomas/) to read the article on LinkedIn.
 
+## Lesson 5: MicroPython Firmware Development (Part 5 - Building From Source [OPTIONAL])
+This tutorial will get setup with your own custom source build.
+
+-> Click [HERE](https://www.linkedin.com/pulse/micropython-firmware-development-part-5-building-from-kevin-thomas/) to read the article on LinkedIn.
+
 ## License
 [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
