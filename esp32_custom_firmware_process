@@ -84,5 +84,13 @@ STEP 5: Build firmware
 STEP 6: Install pyboard.py
 	* Copy pyboard.py from latest - https://github.com/micropython/micropython/blob/master/tools/pyboard.py
 		chmod +x pyboard.py
-	*  into device
+		
+STEP 7: Run pyboard.py
+	* cd /Users/developer/Documents/MPFD
+	* Connect device
 		./pyboard.py --device /dev/cu.SLAB_USBtoUART main.py
+		
+		OR
+		
+		./pyboard.py --device /dev/cu.SLAB_USBtoUART
+		PRESS EN BUTTON ON BOARD TO LAUNCH REPL
