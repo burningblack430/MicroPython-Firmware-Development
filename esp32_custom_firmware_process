@@ -1,0 +1,85 @@
+#python #python3 #micropython #microcontrollers #firmware #firmwareengineer 
+
+git clone git@github.com:micropython/micropython.git
+
+cd micropython
+
+STEP 1: Setting up the toolchain and ESP-IDF on MAC
+	* The ESP-IDF changes quickly and MicroPython only supports certain versions. The git hash of these versions (one for 3.x, one for 4.x) can be found by running make without a configured ESPIDF. Then you can fetch the required IDF using the following command:
+		cd ports/esp32
+		make ESPIDF=  # This will print the supported hashes, copy the one you want.
+		export ESPIDF=$HOME/src/github.com/espressif/esp-idf
+		mkdir -p $ESPIDF
+		git clone https://github.com/espressif/esp-idf.git $ESPIDF
+		git checkout <Current supported ESP-IDF commit hash>
+		git submodule update --init --recursive
+
+STEP 2: Python3 dependencies
+	* Install Python3 dependencies
+		pip3 install pyserial
+		pip3 install pyparsing
+
+	* FIRST TIME SETUP: Setup a Python virtual environment from scratch
+		cd /Users/developer/Documents/micropython/ports/esp32
+		python3 -m venv build-venv
+		source build-venv/bin/activate
+		pip install --upgrade pip
+		pip install -r $ESPIDF/requirements.txt
+	* To re-enter this virtual environment in future sessions, you only need to source the activate script
+		cd /Users/developer/Documents/micropython/ports/esp32
+		source build-venv/bin/activate
+
+STEP 3: Downloading pre-built toolchain manually (IDF 3.x and 4.x)
+	* Install PIP
+		sudo easy_install pip
+	* Download ESP32 toolchain
+		https://dl.espressif.com/dl/xtensa-esp32-elf-osx-1.22.0-80-g6c4433a-5.2.0.tar.gz
+	* Toolchain setup
+		mkdir -p ~/esp
+		cd ~/esp
+		tar -xzf ~/Downloads/xtensa-esp32-elf-osx-1.22.0-80-g6c4433a-5.2.0.tar.gz
+	* To use it, you will need to update your PATH environment variable in ~/.profile file. 
+	* To make xtensa-esp32-elf available for all terminal sessions, add the following line to your ~/.profile file.
+		export PATH=$HOME/esp/xtensa-esp32-elf/bin:$PATH
+	* You will need to update your PATH environment variable to include the ESP32 toolchain.
+		export PATH=$PATH:$HOME/esp/crosstool-NG/builds/xtensa-esp32-elf/bin
+
+STEP 4: Configuring the MicroPython build
+	* Go to ports/esp32
+		cd /Users/developer/Documents/micropython/ports/esp32
+	* OPTIONAL: Create a new file in the ports/esp32 directory called makefile (or GNUmakefile) and add the following lines to that file.
+		ESPIDF ?= $HOME/src/github.com/espressif/esp-idf
+		BOARD ?= GENERIC
+		#PORT ?= /dev/cu.SLAB_USBtoUART
+		#FLASH_MODE ?= qio
+		#FLASH_SIZE ?= 4MB
+		#CROSS_COMPILE ?= xtensa-esp32-elf-
+
+		include Makefile
+	* NOTE ABOVE STEP: I only had to update this file and change the PORT to /dev/cu.SLAB_USBtoUART
+		vim makefile
+		...
+		PORT ?= /dev/cu.SLAB_USBtoUART
+		...
+
+STEP 5: Build firmware
+	* Set the make variable to the esp32
+		make BOARD=ESP32
+	* The MicroPython cross-compiler must be built to pre-compile some of the built-in scripts to bytecode
+		cd /Users/developer/Documents/micropython/mpy-cross
+		make mpy-cross
+	* Make ESP specific submodules and firmware
+		cd /Users/developer/Documents/micropython/ports/esp32
+		make submodules
+		make
+	* OPTIONAL - If you are installing MicroPython to your module for the first time, or after 
+	* installing any other firmware, you should first erase the flash completely
+		make erase
+	* To flash the MicroPython firmware to your ESP32 use the below.
+		make deploy
+
+STEP 6: Install pyboard.py
+	* Copy pyboard.py from latest - https://github.com/micropython/micropython/blob/master/tools/pyboard.py
+		chmod +x pyboard.py
+	*  into device
+		./pyboard.py --device /dev/cu.SLAB_USBtoUART main.py
