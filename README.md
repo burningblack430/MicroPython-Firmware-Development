@@ -26,5 +26,10 @@ This tutorial will get setup with your own custom source build.
 
 -> Click [HERE](https://www.linkedin.com/pulse/micropython-firmware-development-part-5-building-from-kevin-thomas/) to read the article on LinkedIn.
 
+## Lesson 6: MicroPython Firmware Development (Part 6 - Modules)
+This tutorial will focus on creating our first module.
+
+-> Click [HERE](https://www.linkedin.com/pulse/micropython-firmware-development-part-6-modules-kevin-thomas/) to read the article on LinkedIn.
+
 ## License
 [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
