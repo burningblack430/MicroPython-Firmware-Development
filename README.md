@@ -31,5 +31,10 @@ This tutorial will focus on creating our first persistent module.
 
 -> Click [HERE](https://www.linkedin.com/pulse/micropython-firmware-development-part-6-modules-kevin-thomas/) to read the article on LinkedIn.
 
+## Lesson 7: MicroPython Firmware Development (Part 7 - Importing Modules) 
+This tutorial will focus on how import Python modules and begin the topic of firmware design scalability.
+
+-> Click [HERE](https://www.linkedin.com/pulse/micropython-firmware-development-part-7-importing-modules-thomas/) to read the article on LinkedIn.
+
 ## License
 [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
