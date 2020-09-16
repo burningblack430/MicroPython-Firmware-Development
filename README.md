@@ -36,5 +36,10 @@ This tutorial will focus on how import Python modules and begin the topic of fir
 
 -> Click [HERE](https://www.linkedin.com/pulse/micropython-firmware-development-part-7-importing-modules-thomas/) to read the article on LinkedIn.
 
+## Lesson 8: MicroPython Firmware Development (Part 8 - Variables) 
+This tutorial will focus on the concept of variables in Python.
+
+-> Click [HERE](https://www.linkedin.com/pulse/micropython-firmware-development-part-8-variables-kevin-thomas/) to read the article on LinkedIn.
+
 ## License
 [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
