@@ -41,5 +41,10 @@ This tutorial will focus on the concept of variables in Python.
 
 -> Click [HERE](https://www.linkedin.com/pulse/micropython-firmware-development-part-8-variables-kevin-thomas/) to read the article on LinkedIn.
 
+## Lesson 9: MicroPython Firmware Development (Part 9 - Intro To Data Types) 
+This tutorial will focus on the concept of data types.
+
+-> Click [HERE](https://www.linkedin.com/pulse/micropython-firmware-development-part-9-intro-data-types-thomas/) to read the article on LinkedIn.
+
 ## License
 [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
