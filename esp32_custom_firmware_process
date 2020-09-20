@@ -14,6 +14,7 @@ STEP 1: Setting up the toolchain and ESP-IDF on MAC
 		export ESPIDF=$HOME/src/github.com/espressif/esp-idf
 		mkdir -p $ESPIDF
 		git clone https://github.com/espressif/esp-idf.git $ESPIDF
+                cd $ESPIDF
 		git checkout <Current supported ESP-IDF commit hash>
 		git submodule update --init --recursive
 
