@@ -1,3 +1,5 @@
+![image](https://raw.githubusercontent.com/mytechnotalent/MicroPython-Firmware-Development/master/MP%20Firmware%20Development.png)
+
 # MicroPython Firmware Development
 A comprehensive MicroPython Firmware Development tutorial utilizing an ESP32 Development Board going step-by-step into the world of Python for Microcontrollers.
 
