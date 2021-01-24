@@ -1,3 +1,6 @@
+from time import sleep
+
+
 class Player:
     """
     Base class to represent a generic player
@@ -54,3 +57,65 @@ class Player:
         Method to move a generic player from their current position to one position south
         """
         self.__move(dx=0, dy=1)
+
+    def move_east(self, grid):
+        """
+        Method to move the player east one position
+
+        Params:
+            grid: object
+
+        Returns:
+            int, int
+        """
+        if self.dx < grid.available_width:
+            self.__move_east()
+        sleep(0.25)
+        return self.dx, self.dy
+
+    def move_west(self, grid):
+        """
+        Method to move the player east one position
+
+        Params:
+            grid: object
+
+        Returns:
+            int, int
+        """
+        # If the  player is against the left wall do NOT allow them to go through it
+        if self.dx != 1 and self.dx <= grid.available_width:
+            self.__move_west()
+        sleep(0.25)
+        return self.dx, self.dy
+
+    def move_north(self, grid):
+        """
+        Method to move the player north one position
+
+        Params:
+            grid: object
+
+        Returns:
+            int, int
+        """
+        # If the player is against the top wall do NOT allow them to go through it
+        if self.dy != 1 and self.dy <= grid.available_width:
+            self.__move_north()
+        sleep(0.25)
+        return self.dx, self.dy
+
+    def move_south(self, grid):
+        """
+        Method to move the player south one position
+
+        Params:
+            grid: object
+
+        Returns:
+            int, int
+        """
+        if self.dy < grid.available_height:
+            self.__move_south()
+        sleep(0.25)
+        return self.dx, self.dy

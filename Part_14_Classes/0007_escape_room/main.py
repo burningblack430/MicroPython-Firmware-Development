@@ -36,6 +36,7 @@ if __name__ == '__main__':
         # or not entering a valid move
         previous_player_location = player_location
         grid.display(np, GRID_HEIGHT, GRID_WIDTH, LED_COUNT, update_grid)
+
         while True:
             # noinspection PyArgumentList
             if btn_1.value():
@@ -55,16 +56,15 @@ if __name__ == '__main__':
                 update_grid = grid.update(player)
                 break
 
-        # random_location = (x, y) = game.generate_random_numbers(grid)
-        # if random_location == player_location and random_location != previous_player_location:
-        #     random_question, answer_1, answer_2, answer_3, correct_answer_index, correct_answer \
-        #         = game.ask_random_question()
-        #     display.show(Image.SURPRISED)
+        random_location = (x, y) = game.generate_random_numbers(grid)
+        if random_location == player_location and random_location != previous_player_location:
+            random_question, answer_1, answer_2, answer_3, correct_answer_index, correct_answer \
+                = game.ask_random_question()
         #     say(random_question, speed=SPEED)
         #     say('Press 1 for {0}.'.format(answer_1), speed=SPEED)
         #     say('Press 2 for {0}.'.format(answer_2), speed=SPEED)
         #     say('Press 3 for {0}.'.format(answer_3), speed=SPEED)
-        #     display.show(Image.HAPPY)
+
         #     while True:
         #         if button_a.is_pressed():
         #             response = 1
@@ -85,14 +85,14 @@ if __name__ == '__main__':
         #         if 'Red Key' not in player.inventory and not final_question:
         #             receive_red_key = game.generate_random_number(grid)
         #             if receive_red_key == 2:
-        #                 display.show(Image.SURPRISED)
+
         #                 say(player.pick_up_red_key(file_manager), speed=SPEED)
         #                 final_question = True
         #             else:
-        #                 display.show(Image.SURPRISED)
+
         #                 say(player.without_red_key(), speed=SPEED)
         #         elif final_question:
-        #             display.show(Image.SURPRISED)
+
         #             say(game.win(file_manager), speed=SPEED)
         #             music.play(music.POWER_UP)
         #             display.show(Image.ALL_CLOCKS, loop=True, delay=100)

@@ -1,4 +1,3 @@
-from time import sleep
 from Player import Player
 
 
@@ -17,68 +16,6 @@ class EscapeRoomPlayer(Player):
             inventory: list
         """
         super().__init__(name, dx, dy, armour, inventory)
-
-    def move_east(self, grid):
-        """
-        Method to move the player east one position
-
-        Params:
-            grid: object
-
-        Returns:
-            int, int
-        """
-        if self.dx < grid.available_width:
-            self.__move_east()
-        sleep(0.25)
-        return self.dx, self.dy
-
-    def move_west(self, grid):
-        """
-        Method to move the player east one position
-
-        Params:
-            grid: object
-
-        Returns:
-            int, int
-        """
-        # If the  player is against the left wall do NOT allow them to go through it
-        if self.dx != 1 and self.dx <= grid.available_width:
-            self.__move_west()
-        sleep(0.25)
-        return self.dx, self.dy
-
-    def move_north(self, grid):
-        """
-        Method to move the player north one position
-
-        Params:
-            grid: object
-
-        Returns:
-            int, int
-        """
-        # If the player is against the top wall do NOT allow them to go through it
-        if self.dy != 1 and self.dy <= grid.available_width:
-            self.__move_north()
-        sleep(0.25)
-        return self.dx, self.dy
-
-    def move_south(self, grid):
-        """
-        Method to move the player south one position
-
-        Params:
-            grid: object
-
-        Returns:
-            int, int
-        """
-        if self.dy < grid.available_height:
-            self.__move_south()
-        sleep(0.25)
-        return self.dx, self.dy
 
     @staticmethod
     def get_inventory(file_manager):
@@ -101,6 +38,9 @@ class EscapeRoomPlayer(Player):
 
         Params:
             file_manager: object
+
+        Returns:
+            str
         """
         file_manager.write_inventory_file('Red Key')
         return 'You picked up the red key!'
@@ -109,5 +49,8 @@ class EscapeRoomPlayer(Player):
     def without_red_key():
         """
         Method to handle not having the red key
+
+        Returns:
+            str
         """
         return 'You do not have the red key to escape.'

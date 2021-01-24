@@ -4,7 +4,7 @@ from data import questions
 
 class Game:
     """
-    Class to handle game integration
+    Class to handle game logic
     """
 
     @staticmethod
