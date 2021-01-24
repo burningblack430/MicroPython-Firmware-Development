@@ -39,19 +39,19 @@ if __name__ == '__main__':
         while True:
             # noinspection PyArgumentList
             if btn_1.value():
-                player_location = player.keyboard_a_press(grid)
+                player_location = player.move_east_btn(grid)
                 update_grid = grid.update(player)
                 break
             elif btn_2.value():
-                player_location = player.keyboard_d_press(grid)
+                player_location = player.move_west_btn(grid)
                 update_grid = grid.update(player)
                 break
             elif btn_3.value():
-                player_location = player.keyboard_w_press(grid)
+                player_location = player.move_north_btn(grid)
                 update_grid = grid.update(player)
                 break
             elif btn_4.value():
-                player_location = player.keyboard_s_press(grid)
+                player_location = player.move_south_btn(grid)
                 update_grid = grid.update(player)
                 break
 

@@ -31,26 +31,26 @@ class Player:
         self.dx += dx
         self.dy += dy
 
-    def move_north(self):
-        """
-        Method to move a generic player from their current position to one position north
-        """
-        self.__move(dx=0, dy=-1)
-
-    def move_south(self):
-        """
-        Method to move a generic player from their current position to one position south
-        """
-        self.__move(dx=0, dy=1)
-
-    def move_east(self):
+    def __move_east(self):
         """
         Method to move a generic player from their current position to one position east
         """
         self.__move(dx=1, dy=0)
 
-    def move_west(self):
+    def __move_west(self):
         """
         Method to move a generic player from their current position to one position west
         """
         self.__move(dx=-1, dy=0)
+
+    def __move_north(self):
+        """
+        Method to move a generic player from their current position to one position north
+        """
+        self.__move(dx=0, dy=-1)
+
+    def __move_south(self):
+        """
+        Method to move a generic player from their current position to one position south
+        """
+        self.__move(dx=0, dy=1)

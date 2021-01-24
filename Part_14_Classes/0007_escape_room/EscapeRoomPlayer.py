@@ -18,25 +18,9 @@ class EscapeRoomPlayer(Player):
         """
         super().__init__(name, dx, dy, armour, inventory)
 
-    def keyboard_a_press(self, grid):
+    def move_east_btn(self, grid):
         """
-        Method to handle a keyboard a press
-
-        Params:
-            grid: object
-
-        Returns:
-            int, int
-        """
-        # If player is against the left wall do NOT allow them to go through it
-        if self.dx != 1 and self.dx <= grid.available_width:
-            self.move_west()
-        sleep(0.25)
-        return self.dx, self.dy
-
-    def keyboard_d_press(self, grid):
-        """
-        Method to handle a keyboard d press
+        Method to move the player east one position
 
         Params:
             grid: object
@@ -45,13 +29,28 @@ class EscapeRoomPlayer(Player):
             int, int
         """
         if self.dx < grid.available_width:
-            self.move_east()
+            self.__move_east()
         sleep(0.25)
         return self.dx, self.dy
 
-    def keyboard_w_press(self, grid):
+    def move_west_btn(self, grid):
         """
-        Method to handle a keyboard w press
+        Method to move the player east one position
+
+        Params:
+            grid: object
+
+        Returns:
+            int, int
+        """
+        if self.dx != 1 and self.dx <= grid.available_width:
+            self.__move_west()
+        sleep(0.25)
+        return self.dx, self.dy
+
+    def move_north_btn(self, grid):
+        """
+        Method to move the player north one position
 
         Params:
             grid: object
@@ -61,13 +60,13 @@ class EscapeRoomPlayer(Player):
         """
         # If badge player is against the top wall do NOT allow them to go through it
         if self.dy != 1 and self.dy <= grid.available_width:
-            self.move_north()
+            self.__move_north()
         sleep(0.25)
         return self.dx, self.dy
 
-    def keyboard_s_press(self, grid):
+    def move_south_btn(self, grid):
         """
-        Method to handle a keyboard s press
+        Method to move the player south one position
 
         Params:
             grid: object
@@ -76,14 +75,14 @@ class EscapeRoomPlayer(Player):
             int, int
         """
         if self.dy < grid.available_height:
-            self.move_south()
+            self.__move_south()
         sleep(0.25)
         return self.dx, self.dy
 
     @staticmethod
     def get_inventory(file_manager):
         """
-        Method to get the inventory from disk
+        Method to get the player inventory from disk
 
         Params:
             file_manager: object
