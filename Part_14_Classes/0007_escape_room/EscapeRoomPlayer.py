@@ -18,20 +18,6 @@ class EscapeRoomPlayer(Player):
         super().__init__(name, dx, dy, armour, inventory)
 
     @staticmethod
-    def get_inventory(file_manager):
-        """
-        Method to get the player inventory from disk
-
-        Params:
-            file_manager: object
-
-        Returns:
-            str
-        """
-        inventory = file_manager.read_inventory_file()
-        return inventory
-
-    @staticmethod
     def pick_up_red_key(file_manager):
         """
         Method to handle picking up red key

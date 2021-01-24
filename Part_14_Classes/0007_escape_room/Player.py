@@ -119,3 +119,17 @@ class Player:
             self.__move_south()
         sleep(0.25)
         return self.dx, self.dy
+
+    @staticmethod
+    def get_inventory(file_manager):
+        """
+        Method to get the player inventory from disk
+
+        Params:
+            file_manager: object
+
+        Returns:
+            str
+        """
+        inventory = file_manager.read_inventory_file()
+        return inventory
