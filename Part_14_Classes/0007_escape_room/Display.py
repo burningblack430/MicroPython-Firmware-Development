@@ -72,14 +72,13 @@ class Display:
             oled.show()
 
     @staticmethod
-    def win_animation(np, led_count, clear=False):
+    def win_animation(np, led_count):
         """
         Method to display a win animation
 
         Params:
             np: object
             led_count: int
-            clear: bool, optional
         """
         for i in range(0, 4 * 256, 8):
             for j in range(led_count):
@@ -89,7 +88,6 @@ class Display:
                     val = 255 - (i & 0xff)
                 np[j] = (val, 0, 0)
             np.write()
-        if clear:
-            for i in range(led_count):
-                np[i] = (0, 0, 0)
-            np.write()
+        for i in range(led_count):
+            np[i] = (0, 0, 0)
+        np.write()
