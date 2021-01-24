@@ -18,7 +18,7 @@ class EscapeRoomPlayer(Player):
         """
         super().__init__(name, dx, dy, armour, inventory)
 
-    def move_east_btn(self, grid):
+    def move_east(self, grid):
         """
         Method to move the player east one position
 
@@ -33,7 +33,7 @@ class EscapeRoomPlayer(Player):
         sleep(0.25)
         return self.dx, self.dy
 
-    def move_west_btn(self, grid):
+    def move_west(self, grid):
         """
         Method to move the player east one position
 
@@ -49,7 +49,7 @@ class EscapeRoomPlayer(Player):
         sleep(0.25)
         return self.dx, self.dy
 
-    def move_north_btn(self, grid):
+    def move_north(self, grid):
         """
         Method to move the player north one position
 
@@ -65,7 +65,7 @@ class EscapeRoomPlayer(Player):
         sleep(0.25)
         return self.dx, self.dy
 
-    def move_south_btn(self, grid):
+    def move_south(self, grid):
         """
         Method to move the player south one position
 
