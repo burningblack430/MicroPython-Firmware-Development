@@ -70,3 +70,87 @@ class Display:
         if clear:
             oled.fill(0)
             oled.show()
+
+    # @staticmethod
+    # def random_colors(np, led_count):
+    #     """
+    #     Method to display a random color animation
+    #
+    #     Params:
+    #         np: object
+    #         led_count: int
+    #     """
+    #     while True:
+    #         for i in range(0, led_count):
+    #             np[i] = (randint(0, 255), randint(0, 255), randint(0, 255))
+    #             np.write()
+    #             sleep(0.2)
+    #
+    # @staticmethod
+    # def reverse_animation(np, led_count):
+    #     """
+    #     Method to display a reverse animation
+    #
+    #     Params:
+    #         np: object
+    #         led_count: int
+    #     """
+    #     while True:
+    #         for i in range(led_count, 0, -1):
+    #             np[i - 1] = (randint(0, 150), randint(0, 150), randint(0, 150))
+    #             np.write()
+    #             sleep(.2)
+    #
+    # @staticmethod
+    # def win_animation(np, led_count):
+    #     """
+    #     Method to display a win animation
+    #
+    #     Params:
+    #         np: object
+    #         led_count: int
+    #     """
+    #     blue_red = [(0, 0, 64), (64, 0, 0), (0, 0, 64), (64, 0, 0)]
+    #     while True:
+    #         for i in range(0, led_count):
+    #             np[i] = blue_red[randint(0, 3)]
+    #             np[i - 4] = (0, 0, 0)
+    #             np.write()
+    #             sleep(0.05)
+
+    @staticmethod
+    def demo(np, led_count):
+
+        # cycle
+        for i in range(4 * led_count):
+            for j in range(led_count):
+                np[j] = (0, 0, 0)
+            np[i % led_count] = (255, 255, 255)
+            np.write()
+            sleep(0.25)
+
+        # bounce
+        for i in range(4 * led_count):
+            for j in range(led_count):
+                np[j] = (0, 0, 128)
+            if (i // led_count) % 2 == 0:
+                np[i % led_count] = (0, 0, 0)
+            else:
+                np[led_count - 1 - (i % led_count)] = (0, 0, 0)
+            np.write()
+            sleep(0.6)
+
+        # fade in/out
+        for i in range(0, 4 * 256, 8):
+            for j in range(led_count):
+                if (i // 256) % 2 == 0:
+                    val = i & 0xff
+                else:
+                    val = 255 - (i & 0xff)
+                np[j] = (val, 0, 0)
+            np.write()
+
+        # clear
+        for i in range(led_count):
+            np[i] = (0, 0, 0)
+        np.write()

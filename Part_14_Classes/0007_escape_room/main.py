@@ -10,6 +10,7 @@ from EscapeRoomPlayer import EscapeRoomPlayer
 from FileManager import FileManager
 from Game import Game
 from Display import Display
+from Music import Music
 
 LED_COUNT = 64
 GRID_WIDTH = 8
@@ -28,6 +29,7 @@ player = EscapeRoomPlayer()
 file_manager = FileManager()
 game = Game()
 display = Display()
+music = Music()
 
 if __name__ == '__main__':
     player_location = None
@@ -95,14 +97,14 @@ if __name__ == '__main__':
                 if 'Red Key' not in player.inventory and not final_question:
                     receive_red_key = game.generate_random_number(grid)
                     if receive_red_key == 2:
-                        display.text(oled, player.pick_up_red_key(file_manager), 1, True)
+                        display.text(oled, player.pick_up_red_key(file_manager), 3, True)
                         final_question = True
                     else:
                         display.text(oled, player.without_red_key(), 3, True)
                 elif final_question:
                     display.text(oled, game.win(file_manager), 3, True)
-                    # music.play(music.POWER_UP)
-                    # display.show(Image.ALL_CLOCKS, loop=True, delay=100)
+                    music.play_imperial_march(pwm)
+                    display.demo(np, LED_COUNT)
             else:
                 display.text(oled, game.incorrect_answer_response(correct_answer), 3, True)
             generate_random_location = True
