@@ -7,6 +7,7 @@ from Grid import Grid
 from EscapeRoomPlayer import EscapeRoomPlayer
 from FileManager import FileManager
 from Game import Game
+from Display import Display
 
 LED_COUNT = 64
 GRID_WIDTH = 8
@@ -22,11 +23,14 @@ grid = Grid(GRID_WIDTH, GRID_HEIGHT)
 player = EscapeRoomPlayer()
 file_manager = FileManager()
 game = Game()
+display = Display()
 
 if __name__ == '__main__':
     player_location = None
     response = None
     final_question = False
+    generate_random_location = True
+    random_location = None
 
     previous_player_location = player_location
     update_grid = grid.update(player)
@@ -56,11 +60,16 @@ if __name__ == '__main__':
                 update_grid = grid.update(player)
                 break
 
-        random_location = (x, y) = game.generate_random_numbers(grid)
+        if generate_random_location:
+            random_location = (x, y) = game.generate_random_numbers(grid)
+            print(random_location)
+            generate_random_location = False
         if random_location == player_location and random_location != previous_player_location:
             random_question, answer_1, answer_2, answer_3, correct_answer_index, correct_answer \
                 = game.ask_random_question()
-        #     say(random_question, speed=SPEED)
+            display.text(oled, random_question)
+            oled.show()
+            generate_random_location = True
         #     say('Press 1 for {0}.'.format(answer_1), speed=SPEED)
         #     say('Press 2 for {0}.'.format(answer_2), speed=SPEED)
         #     say('Press 3 for {0}.'.format(answer_3), speed=SPEED)

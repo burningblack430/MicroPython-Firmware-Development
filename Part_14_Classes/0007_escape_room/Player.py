@@ -27,6 +27,7 @@ class Player:
 
     def __move(self, dx, dy):
         """Method to move a generic player based on their current x and y location
+
         Params:
             dx: int
             dy: int

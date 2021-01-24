@@ -31,6 +31,7 @@ oled.text(my_text_1, 0, 0)
 oled.text(my_text_2, 0, 10)
 oled.text(my_text_3, 0, 20)
 oled.text(my_text_4, 0, 30)
+
 oled.show()
 
 
