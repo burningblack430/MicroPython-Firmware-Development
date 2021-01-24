@@ -2,8 +2,7 @@
 # esptool.py --chip esp32 --port COM3 --baud 460800 write_flash -z 0x1000 *.bin
 # python pyboard.py --device COM3 -f cp main.py :
 
-from time import sleep
-from machine import Pin, SoftI2C
+from machine import Pin, SoftI2C, PWM
 import neopixel
 import ssd1306
 from Grid import Grid
@@ -18,6 +17,8 @@ GRID_HEIGHT = 8
 np = neopixel.NeoPixel(Pin(2), LED_COUNT)
 i2c = SoftI2C(scl=Pin(22), sda=Pin(21))
 oled = ssd1306.SSD1306_I2C(128, 64, i2c)
+pwm = PWM(Pin(5, Pin.OUT))
+pwm.deinit()  # Turn off sound on init
 btn_1 = Pin(13, Pin.IN)
 btn_2 = Pin(12, Pin.IN)
 btn_3 = Pin(14, Pin.IN)
@@ -72,15 +73,8 @@ if __name__ == '__main__':
             grid.display(np, GRID_HEIGHT, GRID_WIDTH, LED_COUNT, update_grid)
             random_question, answer_1, answer_2, answer_3, correct_answer_index, correct_answer \
                 = game.ask_random_question()
-            oled.fill(0)
-            oled.show()
-            display.text(oled, random_question)
-            oled.show()
-            sleep(5)
-            oled.fill(0)
-            oled.show()
+            display.text(oled, random_question, 5)
             display.texts(oled, answer_1, answer_2, answer_3)
-            oled.show()
             while True:
                 # noinspection PyArgumentList
                 if not btn_1.value():
@@ -93,11 +87,7 @@ if __name__ == '__main__':
                     response = 3
                     break
             if response == correct_answer_index + 1:
-                oled.fill(0)
-                oled.show()
-                display.text(oled, game.correct_answer_response())
-                oled.show()
-                sleep(3)
+                display.text(oled, game.correct_answer_response(), 3)
                 inventory = player.get_inventory(file_manager)
                 player.inventory.append(inventory)
                 if 'Red Key' in player.inventory:
@@ -105,36 +95,15 @@ if __name__ == '__main__':
                 if 'Red Key' not in player.inventory and not final_question:
                     receive_red_key = game.generate_random_number(grid)
                     if receive_red_key == 2:
-                        oled.fill(0)
-                        oled.show()
-                        display.text(oled, player.pick_up_red_key(file_manager))
-                        oled.show()
-                        sleep(3)
+                        display.text(oled, player.pick_up_red_key(file_manager), 1, True)
                         final_question = True
                     else:
-                        oled.fill(0)
-                        oled.show()
-                        sleep(3)
-                        display.text(oled, player.without_red_key())
-                        oled.show()
-                        sleep(3)
+                        display.text(oled, player.without_red_key(), 3, True)
                 elif final_question:
-                    oled.fill(0)
-                    oled.show()
-                    sleep(3)
-                    display.text(oled, game.win(file_manager))
-                    oled.show()
-                    sleep(3)
+                    display.text(oled, game.win(file_manager), 3, True)
                     # music.play(music.POWER_UP)
                     # display.show(Image.ALL_CLOCKS, loop=True, delay=100)
             else:
-                oled.fill(0)
-                oled.show()
-                sleep(3)
-                display.text(oled, game.incorrect_answer_response(correct_answer))
-                oled.show()
-                sleep(3)
+                display.text(oled, game.incorrect_answer_response(correct_answer), 3, True)
             generate_random_location = True
             grid.display(np, GRID_HEIGHT, GRID_WIDTH, LED_COUNT, update_grid)
-            oled.fill(0)
-            oled.show()

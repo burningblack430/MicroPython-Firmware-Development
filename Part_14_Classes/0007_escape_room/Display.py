@@ -1,10 +1,13 @@
+from time import sleep
+
+
 class Display:
     """
     Class to handle a generic oled display
     """
 
     @staticmethod
-    def text(oled, text):
+    def text(oled, text, wait=0, clear=False):
         """
         Method to take a text str and break it up into 4 lines
         to properly display on the oled
@@ -12,7 +15,11 @@ class Display:
         Params:
             oled: object
             question: str
+            wait: int, optional
+            clear: bool, optional
         """
+        oled.fill(0)
+        oled.show()
         text_line_1 = text[0:15]
         text_line_2 = text[15:30]
         text_line_3 = text[30:45]
@@ -21,9 +28,14 @@ class Display:
         oled.text(text_line_2, 0, 10)
         oled.text(text_line_3, 0, 20)
         oled.text(text_line_4, 0, 30)
+        oled.show()
+        sleep(wait)
+        if clear:
+            oled.fill(0)
+            oled.show()
 
     @staticmethod
-    def texts(oled, text_1, text_2, text_3=None, text_4=None):
+    def texts(oled, text_1, text_2, text_3=None, text_4=None, wait=0, clear=False):
         """
         Method to take a 4 text strings and break it up into
         a max of 4 lines to properly display on the oled
@@ -34,7 +46,11 @@ class Display:
             text_2: str
             text_3: str, optional
             text_4: str, optional
+            wait: int, optional
+            clear: bool, optional
         """
+        oled.fill(0)
+        oled.show()
         text_line_3 = None
         text_line_4 = None
         text_line_1 = text_1
@@ -49,3 +65,8 @@ class Display:
             oled.text(text_line_3, 0, 20)
         if text_4:
             oled.text(text_line_4, 0, 30)
+        oled.show()
+        sleep(wait)
+        if clear:
+            oled.fill(0)
+            oled.show()

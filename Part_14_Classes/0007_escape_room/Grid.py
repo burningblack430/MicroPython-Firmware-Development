@@ -6,7 +6,7 @@ class Grid:
     Class to represent a grid
     """
 
-    def __init__(self, led_height=0, led_width=0, led_on='9', led_off='0'):
+    def __init__(self, led_height=0, led_width=0, led_on='*', led_off=' '):
         """
         Attrs:
             led_height: int
