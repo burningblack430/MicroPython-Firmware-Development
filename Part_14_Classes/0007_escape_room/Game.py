@@ -60,7 +60,7 @@ class Game:
         """
         Method to handle correct answer response
         """
-        return '\nCorrect!'
+        return 'Correct!'
 
     @staticmethod
     def incorrect_answer_response(correct_answer):
@@ -73,7 +73,7 @@ class Game:
         Returns:
             str
         """
-        return '\nThe correct answer is {0}.'.format(correct_answer)
+        return 'The correct answer is {0}.'.format(correct_answer)
 
     @staticmethod
     def win(file_manager):
@@ -87,4 +87,4 @@ class Game:
             str
         """
         file_manager.clear_inventory_file()
-        return '\nYou Won!\nYou Escaped!'
+        return 'You Escaped!'

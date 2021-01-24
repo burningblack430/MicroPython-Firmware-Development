@@ -72,6 +72,8 @@ if __name__ == '__main__':
             grid.display(np, GRID_HEIGHT, GRID_WIDTH, LED_COUNT, update_grid)
             random_question, answer_1, answer_2, answer_3, correct_answer_index, correct_answer \
                 = game.ask_random_question()
+            oled.fill(0)
+            oled.show()
             display.text(oled, random_question)
             oled.show()
             sleep(5)
@@ -91,7 +93,11 @@ if __name__ == '__main__':
                     response = 3
                     break
             if response == correct_answer_index + 1:
+                oled.fill(0)
+                oled.show()
                 display.text(oled, game.correct_answer_response())
+                oled.show()
+                sleep(3)
                 inventory = player.get_inventory(file_manager)
                 player.inventory.append(inventory)
                 if 'Red Key' in player.inventory:
@@ -99,14 +105,36 @@ if __name__ == '__main__':
                 if 'Red Key' not in player.inventory and not final_question:
                     receive_red_key = game.generate_random_number(grid)
                     if receive_red_key == 2:
+                        oled.fill(0)
+                        oled.show()
                         display.text(oled, player.pick_up_red_key(file_manager))
+                        oled.show()
+                        sleep(3)
                         final_question = True
                     else:
+                        oled.fill(0)
+                        oled.show()
+                        sleep(3)
                         display.text(oled, player.without_red_key())
+                        oled.show()
+                        sleep(3)
                 elif final_question:
+                    oled.fill(0)
+                    oled.show()
+                    sleep(3)
                     display.text(oled, game.win(file_manager))
+                    oled.show()
+                    sleep(3)
                     # music.play(music.POWER_UP)
                     # display.show(Image.ALL_CLOCKS, loop=True, delay=100)
             else:
+                oled.fill(0)
+                oled.show()
+                sleep(3)
                 display.text(oled, game.incorrect_answer_response(correct_answer))
+                oled.show()
+                sleep(3)
             generate_random_location = True
+            grid.display(np, GRID_HEIGHT, GRID_WIDTH, LED_COUNT, update_grid)
+            oled.fill(0)
+            oled.show()
