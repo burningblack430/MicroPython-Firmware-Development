@@ -81,13 +81,13 @@ if __name__ == '__main__':
             oled.show()
             while True:
                 # noinspection PyArgumentList
-                if btn_1.value():
+                if not btn_1.value():
                     response = 1
                     break
-                elif btn_2.value():
+                elif not btn_2.value():
                     response = 2
                     break
-                elif btn_3.value():
+                elif not btn_3.value():
                     response = 3
                     break
             if response == correct_answer_index + 1:

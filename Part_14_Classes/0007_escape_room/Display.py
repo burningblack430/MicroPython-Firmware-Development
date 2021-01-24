@@ -37,12 +37,12 @@ class Display:
         """
         text_line_3 = None
         text_line_4 = None
-        text_line_1 = text_1[0:15]
-        text_line_2 = text_2[15:30]
+        text_line_1 = text_1
+        text_line_2 = text_2
         if text_3:
-            text_line_3 = text_3[30:45]
+            text_line_3 = text_3
         if text_4:
-            text_line_4 = text_4[45:]
+            text_line_4 = text_4
         oled.text(text_line_1, 0, 0)
         oled.text(text_line_2, 0, 10)
         if text_3:
