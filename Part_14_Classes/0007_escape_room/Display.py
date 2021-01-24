@@ -1,5 +1,4 @@
 from time import sleep
-from random import randint
 
 
 class Display:
@@ -73,18 +72,24 @@ class Display:
             oled.show()
 
     @staticmethod
-    def win_animation(np, led_count):
+    def win_animation(np, led_count, clear=False):
         """
         Method to display a win animation
 
         Params:
             np: object
             led_count: int
+            clear: bool, optional
         """
-        blue_red = [(0, 0, 64), (64, 0, 0), (0, 0, 64), (64, 0, 0)]
-        while True:
-            for i in range(0, led_count):
-                np[i] = blue_red[randint(0, 3)]
-                np[i - 1] = (0, 0, 0)
-                np.write()
-                sleep(0.05)
+        for i in range(0, 4 * 256, 8):
+            for j in range(led_count):
+                if (i // 256) % 2 == 0:
+                    val = i & 0xff
+                else:
+                    val = 255 - (i & 0xff)
+                np[j] = (val, 0, 0)
+            np.write()
+        if clear:
+            for i in range(led_count):
+                np[i] = (0, 0, 0)
+            np.write()

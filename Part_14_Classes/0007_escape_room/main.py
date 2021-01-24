@@ -103,8 +103,9 @@ if __name__ == '__main__':
                         display.text(oled, player.without_red_key(), 3, True)
                 elif final_question:
                     display.text(oled, game.win(file_manager), 3, True)
-                    music.play_imperial_march(pwm)
                     display.win_animation(np, LED_COUNT)
+                    music.play_imperial_march(pwm)
+                    display.win_animation(np, LED_COUNT, True)
             else:
                 display.text(oled, game.incorrect_answer_response(correct_answer), 3, True)
             generate_random_location = True
